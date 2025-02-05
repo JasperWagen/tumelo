@@ -14,7 +14,7 @@ def importCsvToDb(csv_path: str):
     badRecommendationDf = data[~data["Recommendation"].isin(["For", "Against", "Abstain"])]
     data = data[data["Recommendation"].isin(["For", "Against", "Abstain"])]
 
-    if not badRecommendationDf.empty and not testing:
+    if not badRecommendationDf.empty:
         if testing is True:
             raise ValueError
 
@@ -36,14 +36,11 @@ def importCsvToDb(csv_path: str):
         print("Found duplicated rows, saving to disk and removing from import")
         duplicatedOrgSeq.to_csv("duplicatedRows.csv")
 
-    for i, row in duplicatedOrgSeq.iterrows():
-        data = data[
-            (data["Organisation Name"] != row["Organisation Name"])
-            & (data["Sequence Identifier"] != row["Sequence Identifier"])
-            & (data["Meeting Date"] != row["Meeting Date"])
-        ]
-
-    # data.to_csv("testData/cleanedRecommendations.csv")
+    data = data[
+        ~data.set_index(["Organisation Name", "Meeting Date", "Sequence Identifier"]).index.isin(
+            duplicatedOrgSeq.set_index(["Organisation Name", "Meeting Date", "Sequence Identifier"]).index
+        )
+    ]
 
     for _, row in data.iterrows():
         org, _ = Organisation.get_or_create(name=row["Organisation Name"])

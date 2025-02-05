@@ -1,4 +1,7 @@
-,Organisation Name,Sequence Identifier,Meeting Date,count
-0,B&M European Value Retail S.A.,1,2023-07-25,2
-156,First Group,1,2023-07-21,2
-468,Wizz Air Holdings Plc,1,2023-08-02,2
+,Organisation Name,Sequence Identifier,Meeting Date,Recommendation,Proposal Text
+0,B&M European Value Retail S.A.,1,25/07/2023,For,test
+0,B&M European Value Retail S.A.,1,25/07/2023,For,test
+156,First Group,1,21/07/2023,For,test
+156,First Group,1,21/07/2023,For,test
+468,Wizz Air Holdings Plc,1,02/08/2023,For,test
+468,Wizz Air Holdings Plc,1,02/08/2023,For,test
