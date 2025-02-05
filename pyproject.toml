@@ -1,0 +1,42 @@
+[project]
+name = "tumelo"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Your Name",email = "you@example.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas (>=2.2.3,<3.0.0)",
+    "fastapi (>=0.115.8,<0.116.0)",
+    "uvicorn (>=0.34.0,<0.35.0)",
+    "peewee (>=3.17.8,<4.0.0)",
+    "httpx (>=0.28.1,<0.29.0)"
+]
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.1.1"
+isort = "^5.13.2"
+pytest = "^8.0.0"
+mypy = "^1.8.0"
+ruff = "^0.9.4"
+types-peewee = "^3.17.8.20241229"
+pandas-stubs = "^2.2.3.241126"
+pytest-env = "^1.1.5"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+line_length = 120
+
+[tool.black]
+line-length = 120
+
+[tool.pytest.ini_options]
+env = [
+    "TESTING=True"
+]
